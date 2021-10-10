@@ -1,4 +1,4 @@
-import { Collection } from "./sorter";
+import { Sorter } from "./sorter";
 
 class LinkedListNode {
   next: LinkedListNode | null;
@@ -8,12 +8,13 @@ class LinkedListNode {
   }
 }
 
-export class SinglyLinkedList implements Collection {
+export class SinglyLinkedList extends Sorter {
   head: LinkedListNode | null;
   tail: LinkedListNode | null;
   count: number;
 
   constructor() {
+    super();
     this.count = 0;
     this.head = null;
     this.tail = null;
@@ -148,10 +149,10 @@ export class SinglyLinkedList implements Collection {
   }
 
   reverse() {
-    if (!this.head) return undefined
+    if (!this.head) return undefined;
 
     let node = this.head;
-    
+
     this.head = this.tail;
     this.tail = node;
 
@@ -162,7 +163,7 @@ export class SinglyLinkedList implements Collection {
       nextNode = node.next;
       node.next = prev;
       prev = node;
-      if (!nextNode) return 'Something Went Wrong !!!'
+      if (!nextNode) return "Something Went Wrong !!!";
       node = nextNode;
     }
 
@@ -189,14 +190,14 @@ export class SinglyLinkedList implements Collection {
   }
 
   swap(i: number, j: number): void {
-    let rightVal = this.get(j)!.val
-    let leftVal = this.get(i)!.val
+    let rightVal = this.get(j)!.val;
+    let leftVal = this.get(i)!.val;
 
-    this.set(i, rightVal)
-    this.set(j, leftVal)
+    this.set(i, rightVal);
+    this.set(j, leftVal);
   }
 
   compare(i: number, j: number): boolean {
-    return this.get(i)!.val > this.get(j)!.val
+    return this.get(i)!.val > this.get(j)!.val;
   }
 }

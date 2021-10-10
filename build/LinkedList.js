@@ -1,6 +1,22 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SinglyLinkedList = void 0;
+var sorter_1 = require("./sorter");
 var LinkedListNode = /** @class */ (function () {
     function LinkedListNode(val) {
         this.val = val;
@@ -8,11 +24,14 @@ var LinkedListNode = /** @class */ (function () {
     }
     return LinkedListNode;
 }());
-var SinglyLinkedList = /** @class */ (function () {
+var SinglyLinkedList = /** @class */ (function (_super) {
+    __extends(SinglyLinkedList, _super);
     function SinglyLinkedList() {
-        this.count = 0;
-        this.head = null;
-        this.tail = null;
+        var _this = _super.call(this) || this;
+        _this.count = 0;
+        _this.head = null;
+        _this.tail = null;
+        return _this;
     }
     SinglyLinkedList.prototype.push = function (val) {
         var node = new LinkedListNode(val);
@@ -120,6 +139,8 @@ var SinglyLinkedList = /** @class */ (function () {
         return removed;
     };
     SinglyLinkedList.prototype.reverse = function () {
+        if (!this.head)
+            return undefined;
         var node = this.head;
         this.head = this.tail;
         this.tail = node;
@@ -129,6 +150,8 @@ var SinglyLinkedList = /** @class */ (function () {
             nextNode = node.next;
             node.next = prev;
             prev = node;
+            if (!nextNode)
+                return "Something Went Wrong !!!";
             node = nextNode;
         }
         this.print(); // for test purpose
@@ -162,5 +185,5 @@ var SinglyLinkedList = /** @class */ (function () {
         return this.get(i).val > this.get(j).val;
     };
     return SinglyLinkedList;
-}());
+}(sorter_1.Sorter));
 exports.SinglyLinkedList = SinglyLinkedList;
