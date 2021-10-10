@@ -148,8 +148,10 @@ export class SinglyLinkedList implements Collection {
   }
 
   reverse() {
-    let node = this.head;
+    if (!this.head) return undefined
 
+    let node = this.head;
+    
     this.head = this.tail;
     this.tail = node;
 
@@ -157,9 +159,10 @@ export class SinglyLinkedList implements Collection {
     let prev = null;
 
     for (let i = 0; i < this.count; i++) {
-      nextNode = node!.next;
-      node!.next = prev;
+      nextNode = node.next;
+      node.next = prev;
       prev = node;
+      if (!nextNode) return 'Something Went Wrong !!!'
       node = nextNode;
     }
 
