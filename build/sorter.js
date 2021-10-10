@@ -6,10 +6,10 @@ var Sorter = /** @class */ (function () {
         this.collection = collection;
     }
     Sorter.prototype.bubbleSort = function () {
-        for (var i = this.collection.length; i > 0; i--) {
-            for (var j = 0; j < i - 1; j++) {
-                if (this.collection.compare(i, j)) {
-                    this.collection.swap(i, j);
+        for (var i = 1; i <= this.collection.length; i++) {
+            for (var j = 0; j < i; j++) {
+                if (this.collection.compare(j, j + 1)) {
+                    this.collection.swap(j, j + 1);
                 }
             }
         }
