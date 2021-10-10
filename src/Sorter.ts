@@ -1,7 +1,6 @@
 export interface Collection {
-  data: number[] | string;
-  swap(i: any, j: any): void;
-  compare(i: any, j: any): boolean;
+  swap(i: number, j: number): void;
+  compare(i: number, j: number): boolean;
   length: number;
 }
 
