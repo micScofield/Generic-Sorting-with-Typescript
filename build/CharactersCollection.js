@@ -13,10 +13,16 @@ var CharactersCollection = /** @class */ (function () {
         configurable: true
     });
     CharactersCollection.prototype.swap = function (i, j) {
+        var characters = this.data.split('');
+        var temp = characters[j];
+        characters[j] = characters[i];
+        characters[i] = temp;
+        this.data = characters.join('');
     };
-    // compare takes two indeces and compares whether these two should be swapped or not ! Remember we are sorting using bubblesort
+    // compare takes two indeces and compares whether these two chars should be swapped or not ! Remember we are sorting using bubblesort
+    // For general usecase we are converting them to lowercase and then comparing
     CharactersCollection.prototype.compare = function (i, j) {
-        return this.data[i] > this.data[j];
+        return this.data[i].toLowerCase() > this.data[j].toLowerCase();
     };
     return CharactersCollection;
 }());

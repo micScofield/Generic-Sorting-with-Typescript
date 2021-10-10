@@ -6,8 +6,8 @@ var Sorter = /** @class */ (function () {
         this.collection = collection;
     }
     Sorter.prototype.bubbleSort = function () {
-        for (var i = 1; i <= this.collection.length; i++) {
-            for (var j = 0; j < i; j++) {
+        for (var i = 0; i < this.collection.length; i++) {
+            for (var j = 0; j < this.collection.length - i - 1; j++) {
                 if (this.collection.compare(j, j + 1)) {
                     this.collection.swap(j, j + 1);
                 }
