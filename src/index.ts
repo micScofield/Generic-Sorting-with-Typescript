@@ -9,3 +9,11 @@ const characters = new CharactersCollection('sanyam')
 new Sorter(numbers).bubbleSort()
 new Sorter(characters).bubbleSort()
 
+const sll = new SinglyLinkedList()
+sll.push(3)
+sll.push(0)
+sll.push(-5)
+sll.push(10)
+
+new Sorter(sll).bubbleSort()
+sll.print()
